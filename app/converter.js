@@ -1,11 +1,17 @@
+var Logger = require('./Logger.js');
+
 exports.rgbToHex = function(red, green, blue) {
 
   var redHex   = red.toString(16);
   var greenHex = green.toString(16);
   var blueHex  = blue.toString(16);
 
-  return pad(redHex) + pad(greenHex) + pad(blueHex);
-
+  var hex = pad(redHex) + pad(greenHex) + pad(blueHex);
+  
+  if ( hex.length !== 6 ) {
+	  Logger.logger.error("INCORRECT_RESULT", "Résultat de la conversion en hexadécimale incorrect");
+	  throw "error test";
+  }
 };
 
 exports.hexToRgb = function(hex) {
@@ -19,5 +25,8 @@ exports.hexToRgb = function(hex) {
 };
 
 function pad(hex) {
-  return (hex.length === 1 ? "0" + hex : hex);
+	if ( hex.length === 1 )
+		return "0" + hex
+	else if ( hex.length === 2 )
+		return hex;
 }
