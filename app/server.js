@@ -20,4 +20,4 @@ app.get("/hexToRgb", function(req, res) {
   res.send(JSON.stringify(rgb));
 });
 
-app.listen(3000);
+app.listen(80);
