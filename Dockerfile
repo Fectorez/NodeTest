@@ -16,7 +16,10 @@ RUN npm install \
 && echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" |  tee -a /etc/apt/sources.list.d/elastic-6.x.list \
 && apt-get update && apt-get install -y logstash \
 && curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.6.1-amd64.deb \
-&& sudo dpkg -i filebeat-6.6.1-amd64.deb
+&& sudo dpkg -i filebeat-6.6.1-amd64.deb \
+&& systemctl start logstash.service \
+&& cd logstash-6.6.1 \
+&& bin/logstash -e 'input { stdin { } } output { stdout {} }' 
 
 
 # If you are building your code for production
