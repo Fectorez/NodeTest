@@ -30,6 +30,6 @@ RUN npm install
 COPY . .
 
 EXPOSE 80
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-RUN export JAVA_HOME
+#ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+#RUN export JAVA_HOME
 CMD [ "node", "start" ]
