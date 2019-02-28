@@ -30,4 +30,4 @@ RUN npm install \
 
 
 EXPOSE 80
-CMD [ "sh", "node pp/server.js && filebeat -e -c filebeat.yml -d \"publish\" && /usr/share/logstash/bin/logstash -f pipeline.conf   " ]
+CMD [ "sh", "node app/server.js && filebeat -e -c filebeat.yml -d \"publish\" && /usr/share/logstash/bin/logstash -f pipeline.conf   " ]
