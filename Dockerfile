@@ -32,4 +32,4 @@ COPY . .
 EXPOSE 80
 #ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 #RUN export JAVA_HOME
-CMD [ "node", "start" ]
+CMD [ "sh", "node app/server.js" ] 
