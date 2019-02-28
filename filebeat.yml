@@ -1,0 +1,13 @@
+#cloud.id: "projet_integration_continue:ZXUtY2VudHJhbC0xLmF3cy5jbG91ZC5lcy5pbyRhYjQ5NWE0NWY5Mjg0NmUwYjIwZDA1YzdiNjRjZTBmNSQ2MzFkMzhmZTliOTg0YTA0OWE1Zjg3YjM5MzFjMWRhYw=="
+#cloud.auth: "elastic:epFBy4PJJf7dGr9PjPjEmiZm"
+
+filebeat.prospectors:
+- type: log
+  paths:
+    - /logs/app.log
+output.logstash:
+   hosts: ["localhost:5044"]
+setup.kibana:
+   host: "https://631d38fe9b984a049a5f87b3931c1dac.eu-central-1.aws.cloud.es.io:9243"
+   username: "elastic"  
+   password: "epFBy4PJJf7dGr9PjPjEmiZm"
