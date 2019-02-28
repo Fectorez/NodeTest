@@ -20,9 +20,8 @@ RUN npm install \
 && echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" |  tee -a /etc/apt/sources.list.d/elastic-6.x.list \
 && apt-get update && apt-get install logstash \
 && mkdir /usr/share/logstash/patterns \
-&& cp extra /usr/share/logstash/patterns/extra \
-&& /usr/share/logstash/bin/logstash -f pipeline.conf  \
-&&  filebeat -e -c filebeat.yml -d "publish"
+&& cp extra /usr/share/logstash/patterns/extra 
+
 
 # If you are building your code for production
 # RUN npm ci --only=production
@@ -31,4 +30,4 @@ RUN npm install \
 
 
 EXPOSE 80
-CMD [ "node", "app/server.js" ]
+CMD [ "sh", "node pp/server.js && filebeat -e -c filebeat.yml -d \"publish\" && /usr/share/logstash/bin/logstash -f pipeline.conf   " ]
