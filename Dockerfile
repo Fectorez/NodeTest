@@ -8,7 +8,11 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
-RUN npm install
+RUN npm install \
+&& apt-get install openjdk-8-jre \
+&& curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.6.1-amd64.deb \
+&& dpkg -i filebeat-6.6.1-amd64.deb
+
 # If you are building your code for production
 # RUN npm ci --only=production
 
