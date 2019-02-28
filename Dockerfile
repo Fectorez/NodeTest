@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install \
-&& apt-get install openjdk-8-jre \
+&& apt install default-jre \
 && curl -L -O https://artifacts.elastic.co/downloads/beats/filebeat/filebeat-6.6.1-amd64.deb \
 && dpkg -i filebeat-6.6.1-amd64.deb
 
